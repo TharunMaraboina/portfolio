@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-blue: #00f3ff;
+  --color-neon-purple: #b026ff;
+  --color-neon-cyan: #00ffcc;
+  --color-dark-bg: #050505;
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --font-sans: 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-gray-100 font-sans antialiased overflow-x-hidden selection:bg-neon-purple selection:text-white;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-glass-bg backdrop-blur-lg border border-glass-border shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-neon-blue via-neon-purple to-neon-cyan;
+  }
+  .text-gradient-hover {
+    @apply hover:bg-clip-text hover:text-transparent hover:bg-gradient-to-r hover:from-neon-cyan hover:via-neon-purple hover:to-neon-blue transition-all duration-300;
+  }
+  .neon-glow {
+    filter: drop-shadow(0 0 15px rgba(176, 38, 255, 0.6));
+  }
+  .neon-border {
+    @apply border border-neon-purple shadow-[0_0_10px_rgba(176,38,255,0.4)];
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon-purple);
+}
